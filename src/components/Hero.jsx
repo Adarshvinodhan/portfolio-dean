@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
 
 const Hero = () => {
   // Animation variants
@@ -26,7 +27,6 @@ const Hero = () => {
             variants={slideInVariants}
           >
             <div className="relative">
-              <div className="absolute"></div>
               <motion.img
                 src="https://kongunaducollege.ac.in/sites/kongunaducollege.ac.in/files/styles/user_profile/public/pictures/user-profiles/Dr.R.Saravana%20Moorthy.jpg?h=9b93ffa5&itok=3ln-1PLC"
                 alt="Dr. R. Saravana Moorthy"
@@ -51,13 +51,13 @@ const Hero = () => {
             <p className="text-lg mb-6 text-blue-100">Kongunadu College of Arts and Science</p>
             <div className="space-y-4">
               <p className="flex items-center p-3">
-                <span className="font-semibold mr-2">Email:</span>
+                <FaEnvelope className="text-blue-200 mr-2" />
                 <a href="mailto:rsaravanamoorthy_cs@kongunaducollege.ac.in" className="hover:text-blue-200 transition-colors">
                   rsaravanamoorthy_cs@kongunaducollege.ac.in
                 </a>
               </p>
               <p className="flex items-center p-3">
-                <span className="font-semibold mr-2">Phone:</span>
+                <FaPhone className="text-blue-200 mr-2" />
                 <a href="tel:+919894420002" className="hover:text-blue-200 transition-colors">+91 989-442-0002</a>
               </p>
             </div>

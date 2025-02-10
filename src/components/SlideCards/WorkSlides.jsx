@@ -36,7 +36,7 @@ const SlidingCards = () => {
   return (
     <div id="works" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+        <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">
           Featured Works
         </h2>
         <div className="flex justify-center">
