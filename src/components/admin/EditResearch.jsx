@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import api from "../../api/axios";
 
 const EditResearch = () => {
@@ -10,19 +11,22 @@ const EditResearch = () => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [authors, setAuthors] = useState("");
+  const [image, setImage] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Fetch existing research details
   useEffect(() => {
     const fetchResearch = async () => {
       try {
         const response = await api.get(`/researches/${id}`);
-        const { title, description, content, date, authors } = response.data;
+        const { title, description, content, authors, image } = response.data;
         setTitle(title);
         setDescription(description);
         setContent(content);
         setAuthors(authors);
+        setImage(image);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch research details.");
@@ -36,8 +40,12 @@ const EditResearch = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.put(`/research/${id}`, { title, description, content, date, authors });
-      navigate("/admin/dashboard");
+      await api.put(`/researches/${id}`, { title, description, content, authors, image });
+      setSuccessMessage("Research successfully updated! ✅");
+      setTimeout(() => {
+        setSuccessMessage("");
+        navigate("/admin/dashboard");
+      }, 2000);
     } catch (err) {
       setError("Failed to update research.");
     }
@@ -53,6 +61,21 @@ const EditResearch = () => {
 
   return (
     <div className="min-h-screen pt-20 py-12 flex items-center justify-center bg-blue-800 text-white">
+      {/* Success Notification */}
+      <AnimatePresence>
+        {successMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50"
+          >
+            {successMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="bg-white p-16 rounded-xl shadow-lg w-[90%] max-w-6xl text-blue-800">
         <h1 className="text-5xl font-bold mb-10 text-center">Edit Research</h1>
         {error && <p className="text-red-600 mb-4 text-lg">{error}</p>}
@@ -86,6 +109,13 @@ const EditResearch = () => {
             onChange={(e) => setAuthors(e.target.value)}
             className="w-full p-5 text-xl border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
+          />
+          <input
+            type="text" 
+            placeholder="Image URL"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            className="w-full p-5 text-xl border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
           <button
             type="submit"

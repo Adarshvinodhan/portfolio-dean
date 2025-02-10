@@ -24,13 +24,13 @@ const ResearchDetail = () => {
   }, [id]);
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-gray-900">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
     </div>
   );
 
   if (error) return (
-    <div className="min-h-screen flex items-center justify-center text-red-600">
+    <div className="min-h-screen flex items-center justify-center text-red-500 text-lg">
       {error}
     </div>
   );
@@ -38,34 +38,34 @@ const ResearchDetail = () => {
   if (!research) return null;
 
   return (
-    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-20 py-12 min-h-screen bg-gradient-to-br from-blue-900 to-gray-900 text-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link 
           to="/research"
-          className="inline-block mb-8 text-white"
+          className="inline-block mb-8 text-blue-300 hover:text-blue-500 transition-all"
         >
           ← Back to Research Papers
         </Link>
-        <div className=" p-8 rounded-xl">
-          <h1 className="text-3xl font-bold text-white mb-4">{research.title}</h1>
+        <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/20">
+          <h1 className="text-3xl font-bold text-white mb-3">{research.title}</h1>
           <div className="flex flex-wrap gap-2 mb-4">
             {research.keywords?.map((keyword, index) => (
               <span 
                 key={index}
-                className="bg-blue-100 text-whitepx-3 py-1 rounded-full"
+                className="bg-blue-100 text-white text-sm px-3 py-1 rounded-full"
               >
                 {keyword}
               </span>
             ))}
           </div>
-          <p className="text-white mb-6">
-            Published: {research.date}
+          <p className="text-gray-300 text-sm mb-6">
+            Published: {new Date(research.createdAt).toLocaleDateString()}
           </p>
-          <div className="prose max-w-none">
+          <div className="prose max-w-none text-gray-100">
             <h2 className="text-xl font-semibold text-white mb-4">Abstract</h2>
-            <p className="text-whitemb-6">{research.content}</p>
+            <p className="text-white mb-6">{research.content}</p>
             {research.authors && (
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-gray-500 pt-6">
                 <h2 className="text-xl font-semibold text-white mb-2">Authors</h2>
                 <p className="text-white">{research.authors}</p>
               </div>

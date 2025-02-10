@@ -15,7 +15,7 @@ const Hero = () => {
   };
 
   return (
-    <div id="home" className="pt-16 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
+    <div id="home" className="pt-16 bg-gradient-to-br from-blue-900 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Image Section with Slide-In Animation */}
@@ -47,7 +47,7 @@ const Hero = () => {
             <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white">
               Dr. R. Saravana Moorthy
             </h1>
-            <h2 className="text-2xl mb-4 text-blue-200">Dean and Head of Computer Science Department</h2>
+            <h2 className="text-2xl mb-4 text-blue-200">Dean and Head of Computer Science Department-SF</h2>
             <p className="text-lg mb-6 text-blue-100">Kongunadu College of Arts and Science</p>
             <div className="space-y-4">
               <p className="flex items-center p-3">

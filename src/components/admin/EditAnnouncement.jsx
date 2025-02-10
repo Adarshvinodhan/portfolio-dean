@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import api from "../../api/axios";
 
 const EditAnnouncement = () => {
@@ -9,18 +10,21 @@ const EditAnnouncement = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Fetch existing announcement details
   useEffect(() => {
     const fetchAnnouncement = async () => {
       try {
         const response = await api.get(`/announcements/${id}`);
-        const { title, description, content, date } = response.data;
+        const { title, description, content, image } = response.data;
         setTitle(title);
         setDescription(description);
         setContent(content);
+        setImage(image);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch announcement details.");
@@ -34,8 +38,12 @@ const EditAnnouncement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.put(`/announcements/${id}`, { title, description, content, date });
-      navigate("/admin/dashboard");
+      await api.put(`/announcements/${id}`, { title, description, content, image });
+      setSuccessMessage("Announcement successfully updated! ✅");
+      setTimeout(() => {
+        setSuccessMessage("");
+        navigate("/admin/dashboard");
+      }, 2000);
     } catch (err) {
       setError("Failed to update announcement.");
     }
@@ -51,6 +59,21 @@ const EditAnnouncement = () => {
 
   return (
     <div className="min-h-screen pt-20 py-12 flex items-center justify-center bg-blue-800 text-white">
+      {/* Success Notification */}
+      <AnimatePresence>
+        {successMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50"
+          >
+            {successMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="bg-white p-16 rounded-xl shadow-lg w-[90%] max-w-6xl text-blue-800">
         <h1 className="text-5xl font-bold mb-10 text-center">Edit Announcement</h1>
         {error && <p className="text-red-600 mb-4 text-lg">{error}</p>}
@@ -77,6 +100,13 @@ const EditAnnouncement = () => {
             className="w-full h-80 p-5 text-xl border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             required
           ></textarea>
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            className="w-full p-5 text-xl border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          />
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-5 rounded-lg hover:bg-blue-700 transition text-2xl font-semibold"

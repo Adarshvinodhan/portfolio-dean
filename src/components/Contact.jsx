@@ -9,7 +9,7 @@ const Contact = () => {
   ];
 
   return (
-    <div id="contact" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
+    <div id="contact" className="py-20 bg-gradient-to-br from-blue-900 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6">Academic Excellence</h2>

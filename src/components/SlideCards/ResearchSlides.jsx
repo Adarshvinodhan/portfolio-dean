@@ -52,6 +52,14 @@ const ResearchCards = () => {
                 {/* Background Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-300/10 to-transparent rounded-xl pointer-events-none"></div>
 
+                {/* Image */}
+                <img
+                  src={researches[currentIndex].image}
+                  alt={researches[currentIndex].title}
+                  className="w-full h-40 object-cover rounded-lg shadow-md"
+                  onError={(e) => (e.target.style.display = "none")}
+                />
+
                 {/* Title */}
                 <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2 text-center">
                   {researches[currentIndex].title}

@@ -28,7 +28,7 @@ import AdminRoute from './routes/AdminRoutes';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-blue-800">
+      <div className="min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={
