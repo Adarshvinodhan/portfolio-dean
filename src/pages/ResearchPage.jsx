@@ -11,7 +11,7 @@ const ResearchPage = () => {
     const fetchResearches = async () => {
       try {
         const response = await api.get('/researches');
-        setResearches(response.data.data);
+        setResearches(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch research papers');
@@ -35,31 +35,30 @@ const ResearchPage = () => {
   );
 
   return (
-    <div className="pt-20 py-12 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white min-h-screen">
+    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-blue-900 mb-8">Research Papers</h1>
+        <h1 className="text-4xl font-bold text-white mb-8">Research Papers</h1>
         <div className="grid grid-cols-1 gap-6">
           {researches.map((research) => (
             <Link 
-              key={research.id}
-              to={`/research/${research.documentId}`}
-              className="block glass-effect p-6 rounded-xl hover:shadow-xl transition-all duration-300"
+              key={research._id}
+              to={`/research/${research._id}`}
+              className="block p-6 rounded-xl hover:shadow-xl transition-all duration-300"
             >
-              <h2 className="text-xl font-bold text-blue-900 mb-2">{research.title}</h2>
+              <h2 className="text-xl font-bold text-white mb-2">{research.title}</h2>
               <div className="flex flex-wrap gap-2 mb-3">
                 {research.keywords?.map((keyword, index) => (
                   <span 
                     key={index}
-                    className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full"
+                    className="bg-blue-100 text-white text-sm px-3 py-1 rounded-full"
                   >
                     {keyword}
                   </span>
                 ))}
               </div>
-              <p className="text-blue-600 text-sm mb-2">
-                Published: {new Date(research.publicationDate).toLocaleDateString()}
+              <p className="text-white text-sm mb-2">
+                Authors: {research.authors}
               </p>
-              <p className="text-gray-700 line-clamp-2">{research.abstract}</p>
             </Link>
           ))}
         </div>

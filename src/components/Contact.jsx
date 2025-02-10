@@ -24,7 +24,7 @@ const Contact = () => {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="glass-effect rounded-xl p-8 text-center transform hover:-translate-y-1 transition-all duration-300"
+              className=" rounded-xl p-8 text-center transform hover:-translate-y-1 transition-all duration-300"
             >
               <stat.icon className="text-4xl mx-auto mb-4 text-blue-300" />
               <div className="text-4xl font-bold mb-2">{stat.value}</div>

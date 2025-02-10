@@ -11,7 +11,7 @@ const AnnouncementsPage = () => {
     const fetchAnnouncements = async () => {
       try {
         const response = await api.get('/announcements');
-        setAnnouncements(response.data.data);
+        setAnnouncements(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch announcements');
@@ -29,20 +29,20 @@ const AnnouncementsPage = () => {
   );
 
   if (error) return (
-    <div className="min-h-screen flex items-center justify-center text-red-600">
+    <div className="min-h-screen flex items-center justify-center text-white">
       {error}
     </div>
   );
 
   return (
-    <div className="pt-20 py-12 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white min-h-screen">
+    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-white mb-8">Announcements</h1>
         <div className="space-y-6">
           {announcements.map((announcement) => (
             <Link 
-              key={announcement.documentId}
-              to={`/announcements/${announcement.documentId}`}
+              key={announcement._id}
+              to={`/announcements/${announcement._id}`}
               className="block p-6 rounded-xl hover:shadow-xl transition-all duration-300"
             >
               <div className="flex justify-between items-start">

@@ -12,7 +12,7 @@ const WorkDetail = () => {
     const fetchWork = async () => {
       try {
         const response = await api.get(`/works/${id}`);
-        setWork(response.data.data);
+        setWork(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch work details');
@@ -24,7 +24,7 @@ const WorkDetail = () => {
   }, [id]);
 
   if (loading) return (
-    <div className="min-h-screen from-blue-900 via-blue-800 to-blue-700 flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
     </div>
   );
@@ -38,7 +38,7 @@ const WorkDetail = () => {
   if (!work) return null;
 
   return (
-    <div className="pt-20 py-12 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white min-h-screen">
+    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link 
           to="/works"
@@ -48,7 +48,7 @@ const WorkDetail = () => {
         </Link>
         <div className="p-8 rounded-xl">
           <h1 className="text-3xl font-bold text-white mb-4">{work.title}</h1>
-          <p className="text-white mb-4">Year: {work.year}</p>
+          <p className="text-white mb-4">{work.date}</p>
           <div className="prose max-w-none">
             <p className="text-white mb-6">{work.content}</p>
             <div className="border-t border-gray-200 pt-6">

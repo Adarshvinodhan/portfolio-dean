@@ -39,7 +39,7 @@ const AnnouncementDetail = () => {
   if (!announcement) return null;
 
   return (
-    <div className="pt-20 py-12 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white min-h-screen">
+    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link 
           to="/announcements"

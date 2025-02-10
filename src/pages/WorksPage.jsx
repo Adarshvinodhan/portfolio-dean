@@ -11,7 +11,7 @@ const WorksPage = () => {
     const fetchWorks = async () => {
       try {
         const response = await api.get('/works');
-        setWorks(response.data.data);
+        setWorks(response.data);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch works');
@@ -23,7 +23,7 @@ const WorksPage = () => {
   }, []);
 
   if (loading) return (
-    <div className="min-h-screen from-blue-900 via-blue-800 to-blue-700 flex items-center justify-center">
+    <div className="min-h-screen  flex items-center justify-center">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2  border-blue-900"></div>
     </div>
   );
@@ -35,18 +35,19 @@ const WorksPage = () => {
   );
 
   return (
-    <div className="pt-20 py-12 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white min-h-screen">
+    <div className="pt-20 py-12 bg-blue-800 text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-white mb-8">Notable Works</h1>
+        <h1 className="text-4xl font-bold text-white mb-8">Recent Works</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {works.map((work) => (
             <Link 
-              key={work.id} 
-              to={`/works/${work.documentId}`}
-              className="glass-effect p-6 rounded-xl hover:shadow-xl transition-all duration-300"
+              key={work._id} 
+              to={`/works/${work._id}`}
+              className="p-6 rounded-xl hover:shadow-xl transition-all duration-300"
             >
               <h2 className="text-xl font-bold text-white mb-2">{work.title}</h2>
-              <p className="text-white mb-2">Year: {work.year}</p>
+              <p>{work.description}</p>
+              <p className="text-white mb-2">{work.date}</p>
             </Link>
           ))}
         </div>
