@@ -36,10 +36,10 @@ const Contact = () => {
         {/* Contact Information */}
         <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-8">
           <h3 className="text-2xl font-bold mb-8 text-center">Get in Touch</h3>
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-colors">
               <FaEnvelope className="text-2xl text-blue-300 shrink-0" />
-              <div className="w-full">
+              <div className="w-full overflow-hidden">
                 <h4 className="font-semibold text-blue-200">Email</h4>
                 <a
                   href="mailto:rsaravanamoorthy_cs@kongunaducollege.ac.in"
