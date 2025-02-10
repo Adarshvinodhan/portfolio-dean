@@ -44,11 +44,11 @@ const Hero = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white">
+            <h1 className="pl-6 text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white">
               Dr. R. Saravana Moorthy
             </h1>
-            <h2 className="text-2xl mb-4 text-blue-200">Dean and Head of Computer Science Department-SF</h2>
-            <p className="text-lg mb-6 text-blue-100">Kongunadu College of Arts and Science</p>
+            <h2 className="pl-6 text-2xl mb-4 text-blue-200">Dean and Head of Computer Science Department-SF</h2>
+            <p className="pl-6 text-lg mb-6 text-blue-100">Kongunadu College of Arts and Science</p>
             <div className="space-y-4">
               <p className="flex items-center p-3">
                 <FaEnvelope className="text-blue-200 mr-2" />

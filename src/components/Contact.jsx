@@ -14,7 +14,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6">Academic Excellence</h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-            Leading cutting-edge research in computer science with a focus on practical applications 
+            Leading cutting-edge research in computer science with a focus on practical applications
             of AI and machine learning in networking and data science.
           </p>
         </div>
@@ -22,7 +22,7 @@ const Contact = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {stats.map((stat, index) => (
-            <div 
+            <div
               key={index}
               className=" rounded-xl p-8 text-center transform hover:-translate-y-1 transition-all duration-300"
             >
@@ -38,29 +38,31 @@ const Contact = () => {
           <h3 className="text-2xl font-bold mb-8 text-center">Get in Touch</h3>
           <div className="space-y-6">
             <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <FaEnvelope className="text-2xl text-blue-300" />
-              <div>
+              <FaEnvelope className="text-2xl text-blue-300 shrink-0" />
+              <div className="w-full">
                 <h4 className="font-semibold text-blue-200">Email</h4>
-                <a 
-                  href="mailto:rsaravanamoorthy_cs@kongunaducollege.ac.in" 
-                  className="text-white hover:text-blue-200 transition-colors"
+                <a
+                  href="mailto:rsaravanamoorthy_cs@kongunaducollege.ac.in"
+                  className="text-white hover:text-blue-200 transition-colors break-words text-sm md:text-base"
                 >
                   rsaravanamoorthy_cs@kongunaducollege.ac.in
                 </a>
               </div>
             </div>
+
             <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <FaPhone className="text-2xl text-blue-300" />
-              <div>
+              <FaPhone className="text-2xl text-blue-300 shrink-0" />
+              <div className="w-full">
                 <h4 className="font-semibold text-blue-200">Phone</h4>
-                <a 
-                  href="tel:+919894420002" 
-                  className="text-white hover:text-blue-200 transition-colors"
+                <a
+                  href="tel:+919894420002"
+                  className="text-white hover:text-blue-200 transition-colors break-words text-sm md:text-base"
                 >
                   +91 989-442-0002
                 </a>
               </div>
             </div>
+
           </div>
         </div>
       </div>
