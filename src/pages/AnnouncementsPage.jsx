@@ -40,13 +40,22 @@ const AnnouncementsPage = () => {
         <h1 className="text-4xl font-extrabold text-center mb-12">Announcements</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {announcements.map((announcement) => (
-            <Link 
+            <Link
               key={announcement._id}
               to={`/announcements/${announcement._id}`}
               className="block bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg hover:shadow-2xl transition-all duration-300 border border-white/20"
             >
-                <h2 className="text-2xl font-semibold text-white mb-2">{announcement.title}</h2>
-                <p className="text-gray-200 mb-2">{announcement.description}</p>
+              {/* Image Section */}
+              {announcement.image && (
+                <img
+                  src={announcement.image}
+                  alt={announcement.title}
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
+              )}
+
+              <h2 className="text-2xl font-semibold text-white mb-2">{announcement.title}</h2>
+              <p className="text-gray-200 mb-2">{announcement.description}</p>
               <p className="text-gray-400 text-sm">
                 {new Date(announcement.createdAt).toDateString()}
               </p>
@@ -55,6 +64,7 @@ const AnnouncementsPage = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

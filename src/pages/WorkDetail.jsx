@@ -47,6 +47,14 @@ const WorkDetail = () => {
           ← Back to Works
         </Link>
         <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/20">
+          {/* Image Section */}
+          {work.image && (
+            <img 
+              src={work.image} 
+              alt="Work" 
+              className="w-full h-64 object-cover rounded-lg mb-6"
+            />
+          )}
           <h1 className="text-3xl font-bold text-white mb-3">{work.title}</h1>
           <p className="text-gray-300 text-sm mb-4">
             Published: {new Date(work.createdAt).toLocaleDateString()}

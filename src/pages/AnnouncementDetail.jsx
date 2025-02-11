@@ -48,6 +48,14 @@ const AnnouncementDetail = () => {
           ← Back to Announcements
         </Link>
         <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/20">
+          {/* Image Section */}
+          {announcement.image && (
+            <img 
+              src={announcement.image} 
+              alt="Announcement" 
+              className="w-full h-64 object-cover rounded-lg mb-6"
+            />
+          )}
           <h1 className="text-3xl font-bold text-white mb-3">{announcement.title}</h1>
           <p className="text-gray-300 text-sm mb-6">
             {new Date(announcement.createdAt).toLocaleDateString()}

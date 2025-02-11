@@ -47,6 +47,14 @@ const ResearchDetail = () => {
           ← Back to Research Papers
         </Link>
         <div className="bg-white bg-opacity-10 backdrop-blur-md p-8 rounded-xl shadow-lg border border-white/20">
+          {/* Image Section */}
+          {research.image && (
+            <img 
+              src={research.image} 
+              alt="Research Paper" 
+              className="w-full h-64 object-cover rounded-lg mb-6"
+            />
+          )}
           <h1 className="text-3xl font-bold text-white mb-3">{research.title}</h1>
           <div className="flex flex-wrap gap-2 mb-4">
             {research.keywords?.map((keyword, index) => (
