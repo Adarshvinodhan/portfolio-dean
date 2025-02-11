@@ -23,7 +23,7 @@ import AddAnnouncement from './components/admin/AddAnnouncement';
 import EditAnnouncement from './components/admin/EditAnnouncement';
 import ResearchList from './components/admin/ResearchList';
 import AddResearch from './components/admin/AddResearch';
-import EditResearch from './components/admin/EditResearch';
+import EditResearch from './components/admin/EditResearch';;
 import AdminRoute from './routes/AdminRoutes';
 function App() {
   return (

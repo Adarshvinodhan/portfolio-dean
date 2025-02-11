@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../../api/axios";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,7 +13,6 @@ const SlidingCards = () => {
         const response = await api.get("/works");
         if (response.data) {
           console.log(response.data);
-          
           setWorks(response.data);
         }
       } catch (error) {
@@ -48,7 +48,7 @@ const SlidingCards = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="relative flex flex-col items-center p-6 rounded-xl w-80 h-[420px] overflow-hidden shadow-lg bg-white 
+                className="relative flex flex-col items-center p-6 rounded-xl w-80 h-[460px] overflow-hidden shadow-lg bg-white 
                 border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
               >
                 {/* Background Glow Effect */}
@@ -68,9 +68,17 @@ const SlidingCards = () => {
                 </h3>
 
                 {/* Content Preview */}
-                <p className="text-gray-600 text-sm text-center overflow-hidden text-ellipsis line-clamp-3">
+                <p className="text-gray-600 text-md text-center overflow-hidden text-ellipsis line-clamp-3">
                   {works[currentIndex].content}
                 </p>
+
+                {/* Read More Button */}
+                <Link
+                  to={`/works/${works[currentIndex]._id}`}
+                  className="absolute bottom-4 right-4 text-blue-600 font-semibold hover:underline"
+                >
+                  Read More →
+                </Link>
 
                 {/* Subtle Border Accent */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
@@ -84,4 +92,3 @@ const SlidingCards = () => {
 };
 
 export default SlidingCards;
-
